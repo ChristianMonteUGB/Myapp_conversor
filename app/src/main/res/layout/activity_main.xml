@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:layout_margin="20dp">
+
+    <Spinner
+        android:id="@+id/spnDo"
+        android:layout_marginTop="100dp"
+        android:layout_marginLeft="40dp"
+        android:entries="@array/monedas"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"></Spinner>
+    <TextView
+        android:id="@+id/lblde"
+        android:text="DE:"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="40dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"></TextView>
+    <Spinner
+        android:id="@+id/spnDe"
+        android:layout_marginTop="40dp"
+        android:layout_marginLeft="40dp"
+        android:entries="@array/monedas"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"></Spinner>
+    <EditText
+        android:id="@+id/cantidad"
+        android:layout_marginTop="180dp"
+        android:hint="cantidad a convertir"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"></EditText>
+    <Button
+        android:id="@+id/btnconvertir"
+        android:layout_marginTop="260dp"
+        android:text="Convertir"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"></Button>
+    <TextView
+        android:id="@+id/lblrespuesta"
+        android:layout_marginTop="350dp"
+        android:text="Respuesta: ?"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"></TextView>
+
+    <Spinner
+        android:id="@+id/spncambio"
+        android:layout_marginTop="450dp"
+        android:layout_marginLeft="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+</RelativeLayout>
