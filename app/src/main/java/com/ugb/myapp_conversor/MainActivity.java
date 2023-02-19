@@ -6,11 +6,15 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.TabHost;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
 public class MainActivity extends AppCompatActivity {
+
+    TabHost tbh;
 
     TextView temp;
 
@@ -18,89 +22,100 @@ public class MainActivity extends AppCompatActivity {
 
     Button btn;
 
-    conversores miConversor=new conversores();
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        btn=findViewById(R.id.btnconvertir);
+        tbh = findViewById(R.id.tbhConversores);
+        tbh.setup();
+
+        tbh.addTab(tbh.newTabSpec("longitud").setContent(R.id.tbhLongitud).setIndicator("", getDrawable(R.drawable.longitud)));
+        tbh.addTab(tbh.newTabSpec("monedas").setContent(R.id.tbhMonedas).setIndicator("", getDrawable(R.drawable.dinero)));
+        tbh.addTab(tbh.newTabSpec("peso").setContent(R.id.tbPeso).setIndicator("", getDrawable(R.drawable.masa)));
+        tbh.addTab(tbh.newTabSpec("opciones_aritmeticas").setContent(R.id.tbhopciones_aritmeticas).setIndicator("", getDrawable(R.drawable.aritmetica)));
+
+        btn = (Button) findViewById(R.id.btnCalcular);
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                spn = findViewById(R.id.spnDo);
-                int de = spn.getSelectedItemPosition();
-
-                spn = findViewById(R.id.spnDe);
-                int a = spn.getSelectedItemPosition();
-
-                temp =(TextView) findViewById(R.id.cantidad);
-                double cantidad = Double.parseDouble(temp.getText().toString());
-
-                double respuesta = miConversor.convertir(0, de, a, cantidad);
-                temp = findViewById(R.id.lblrespuesta);
-                temp.setText("Respuesta: "+ respuesta);
+                temp = findViewById(R.id.txtNum1);
+                double num1 = Double.parseDouble(temp.getText().toString());
+                double num2 = 0;
+                temp = (TextView) findViewById(R.id.txtNum2);
+                try {
+                    num2 = Double.parseDouble(temp.getText().toString());
+                }catch (Exception e){
+                    //manejador de error
+                }
+                double resp = 0;
+                String msg = "Operacion invalida";
+                /*rgp = (RadioGroup)findViewById(R.id.rgpOpciones);
+                switch (rgp.getCheckedRadioButtonId()){
+                    case R.id.optSuma:
+                        resp = num1 + num2;
+                        msg = "La suma es: "+ resp;
+                        break;
+                    case R.id.optResta:
+                        resp = num1 - num2;
+                        msg = "La resta es: "+ resp;
+                        break;
+                    case R.id.optMultiplicacion:
+                        resp = num1 * num2;
+                        msg = "La multiplicacion es: "+ resp;
+                        break;
+                    case R.id.optDivision:
+                        resp = num1 / num2;
+                        msg = "La division es: "+ resp;
+                        break;
+                    case R.id.optExponente:
+                        resp = Math.pow(num1, num2);
+                        msg = "Exponente: "+ resp;
+                        break;
+                }*/
+                spn = (Spinner)findViewById(R.id.spnOpciones);
+                switch (spn.getSelectedItemPosition()){
+                    case 0: //Suma
+                        resp = num1 + num2;
+                        msg = "La suma es: "+ resp;
+                        break;
+                    case 1://Resta
+                        resp = num1 - num2;
+                        msg = "La resta es: "+ resp;
+                        break;
+                    case 2://Multiplicacion
+                        resp = num1 * num2;
+                        msg = "La multiplicacion es: "+ resp;
+                        break;
+                    case 3://division
+                        resp = num1 / num2;
+                        msg = "La division es: "+ resp;
+                        break;
+                    case 4://exponente
+                        resp = Math.pow(num1,num2);
+                        msg = "La exponenciacion es: "+ resp;
+                        break;
+                    case 5://factorial
+                        resp = 1;
+                        for(int i=2; i<=num1; i++){
+                            resp *= i;//resp = resp * i;
+                        }
+                        msg = "Factorial!: "+ resp;
+                        break;
+                }
+                Toast.makeText(MainActivity.this, msg, Toast.LENGTH_LONG).show();
             }
         });
     }
 }
 
 
-class conversores{
-    double[][] valores ={
-            {1, 7.84, 24.66, 36.56, 580.23, 8.75, 0.94, 131.33, 82.54},//monedas
 
 
-    };
-    public double convertir(int opcion, int de , int a, double cantidad){
-        return valores[opcion][a]/ valores[opcion][de] * cantidad;
-    }
-}
 
-class conversores2{
 
-    double[][] valores2 ={
-            {1, 10, 100, 1000, 10000, 100000},//longitudes
-    };
 
-    public double convertir(int opcion, int de , int a, double cantidad) {
-        return valores2[opcion][a] / valores2[opcion][de] * cantidad;
-    }
-
-}
-
-class conversores3{
-
-    double[][] valores3 ={
-            {1, 16, 0.453592, 0.000453592},//Peso
-    };
-
-    public double convertir(int opcion, int de , int a, double cantidad) {
-        return valores3[opcion][a] / valores3[opcion][de] * cantidad;
-    }
-
-}
-
-class conversores4{
-    double[][] valores4 ={
-            {1, 1024, 1048579, 1073741824},//almacenamiento
-    };
-    public double convertir(int opcion, int de , int a, double cantidad) {
-        return valores4[opcion][a] / valores4[opcion][de] * cantidad;
-    }
-
-}
-
-class conversores5{
-    double[][] valores5 ={
-            {1, 1024},//transferencia de datos (internet)
-    };
-    public double convertir(int opcion, int de , int a, double cantidad) {
-        return valores5[opcion][a] / valores5[opcion][de] * cantidad;
-    }
-}
 
 
 

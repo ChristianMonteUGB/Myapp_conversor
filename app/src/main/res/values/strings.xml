@@ -1,5 +1,13 @@
 <resources>
     <string name="app_name">Myapp_conversor</string>
+    <string-array name="opciones_aritmeticas">
+        <item>Suma</item>
+        <item>Resta</item>
+        <item>Multiplicacion</item>
+        <item>Division</item>
+        <item>Exponente</item>
+        <item>Factorial (!)</item>
+    </string-array>
     <string-array name="monedas">
         <item>Dolar</item>
         <item>Quetzal</item>
@@ -11,7 +19,12 @@
         <item>Yenes</item>
         <item>Rupias</item>
     </string-array>
-
+    <string-array name="peso">
+        <item>libra</item>
+        <item>onza</item>
+        <item>kilogramo</item>
+        <item>tonelada</item>
+    </string-array>
     <string-array name="longitudes">
         <item>centimetro</item>
         <item>decimetro</item>
@@ -19,17 +32,5 @@
         <item>decamentro</item>
         <item>hectometro</item>
         <item>kilometro</item>
-    </string-array>
-
-    <string-array name="peso">
-        <item>libra</item>
-        <item>onza</item>
-        <item>kilogramo</item>
-        <item>tonelada</item>
-    </string-array>
-
-    <string-array name="almacenamiento">
-        <item>byte</item>
-        <item>kilobyte</item>
     </string-array>
 </resources>
