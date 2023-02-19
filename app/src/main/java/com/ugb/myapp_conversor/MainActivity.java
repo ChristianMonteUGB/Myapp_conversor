@@ -30,10 +30,10 @@ public class MainActivity extends AppCompatActivity {
         tbh = findViewById(R.id.tbhConversores);
         tbh.setup();
 
-        tbh.addTab(tbh.newTabSpec("longitud").setContent(R.id.tbhLongitud).setIndicator("", getDrawable(R.drawable.longitud)));
-        tbh.addTab(tbh.newTabSpec("monedas").setContent(R.id.tbhMonedas).setIndicator("", getDrawable(R.drawable.dinero)));
-        tbh.addTab(tbh.newTabSpec("peso").setContent(R.id.tbPeso).setIndicator("", getDrawable(R.drawable.masa)));
-        tbh.addTab(tbh.newTabSpec("opciones_aritmeticas").setContent(R.id.tbhopciones_aritmeticas).setIndicator("", getDrawable(R.drawable.aritmetica)));
+        tbh.addTab(tbh.newTabSpec("longitud").setContent(R.id.Longitud).setIndicator("", getDrawable(R.drawable.longitud)));
+        tbh.addTab(tbh.newTabSpec("monedas").setContent(R.id.Monedas).setIndicator("", getDrawable(R.drawable.dinero)));
+        tbh.addTab(tbh.newTabSpec("peso").setContent(R.id.Peso).setIndicator("", getDrawable(R.drawable.masa)));
+        tbh.addTab(tbh.newTabSpec("opciones_aritmeticas").setContent(R.id.opciones_aritmeticas).setIndicator("", getDrawable(R.drawable.aritmetica)));
 
         btn = (Button) findViewById(R.id.btnCalcular);
 
